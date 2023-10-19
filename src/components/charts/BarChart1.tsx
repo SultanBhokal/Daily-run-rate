@@ -22,9 +22,11 @@ export default function BarChart1(){
     )
   }
 
+  console.log("show")
+
   return (
     <div style={{ width: '100%' }} className='grid grid-cols-1 gap-10 justify-items-center mt-5'>
-       <ResponsiveContainer width="100%" height="100%">
+       <ResponsiveContainer width="100%" height={200}>
         <AreaChart
           width={500}
           height={400}
