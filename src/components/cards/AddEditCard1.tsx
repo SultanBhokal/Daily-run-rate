@@ -1,12 +1,11 @@
 import { useMemo, useRef, useState } from "react"
 import PopoverCalendar from "../others/PopoverCalendar";
-import { CalculatorIcon, CalendarCheck2, CalendarCheck2Icon, CalendarDaysIcon, CalendarIcon, CalendarMinusIcon, CalendarPlusIcon, CircleEqualIcon, PencilIcon, Play, Tally5, Tally5Icon } from "lucide-react";
+import { CalculatorIcon, CalendarCheck2Icon, CalendarDaysIcon, CalendarMinusIcon, CalendarPlusIcon, CircleEqualIcon, Play,  Tally5Icon } from "lucide-react";
 import { differenceInDays, format } from "date-fns";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { StoreState, obj, store, updateRecords } from "@/hooks/zustand-store/store";
+import { StoreState, obj, store } from "@/hooks/zustand-store/store";
 import { generateUniqueId } from "@/utils/randomId";
-import { Popover, PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
 import PopoverEditCard from "../others/PopoverEditCard";
 import AlertDiologDelete from "../others/AlertDiologDelete";
 
@@ -56,7 +55,7 @@ export default function AddEditCard1(props: props) {
   useMemo(() => {
     console.log("rendered")
     if (singleDate !== undefined && endDate !== undefined) {
-      if (singleDate?.getMonth() > endDate?.getMonth() || singleDate?.getDate() > endDate.getDate()) {
+      if (singleDate?.getMonth() > endDate?.getMonth() || (singleDate.getMonth() === endDate.getMonth() && singleDate?.getDate() > endDate.getDate())) {
         console.log("see")
         setEndDate(singleDate)
         setMultipleDates([])

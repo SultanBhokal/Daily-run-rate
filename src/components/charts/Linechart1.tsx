@@ -1,23 +1,23 @@
 import { StoreState, store } from '@/hooks/zustand-store/store';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import format from 'date-fns/format';
-const data = [
-  { name: 'Page A', uv: 4000 },
-  { name: 'Page B', uv: 3000 },
-  { name: 'Page C', uv: 2000 },
-  { name: 'Page D' },
-  { name: 'Page E', uv: 1890 },
-  { name: 'Page F', uv: 2390 },
-  { name: 'Page G', uv: 3490 },
-];
+// const data = [
+//   { name: 'Page A', uv: 4000 },
+//   { name: 'Page B', uv: 3000 },
+//   { name: 'Page C', uv: 2000 },
+//   { name: 'Page D' },
+//   { name: 'Page E', uv: 1890 },
+//   { name: 'Page F', uv: 2390 },
+//   { name: 'Page G', uv: 3490 },
+// ];
 
 
 
 
 export default function ScatterChart1(){
   const records = store(state=>(state as StoreState).records);
-  const data2 = records.map(rec=>{
-     const obj = {name:`${format(rec.startDate,"dd-MM-yy")} : ${format(rec.endDate,"dd-MM-yy")}`,DRR:rec.expectedDrr}
+  const data2 = records.map((rec,ind)=>{
+     const obj = {name:`${format(rec.startDate,"dd-MM-yy")} : ${format(rec.endDate,"dd-MM-yy")}-${ind}`,DRR:rec.expectedDrr}
      return obj
   })
 
@@ -26,7 +26,7 @@ export default function ScatterChart1(){
   if(data2.length === 0){
     return(
       <div>
-        no data
+        Line chart , No data
       </div>
     )
   }

@@ -23,17 +23,17 @@ type obj = {
 
 }
 
-type cell = {
-  value: string | any,
-  key: string
-}
+// type cell = {
+//   value: string | any,
+//   key: string
+// }
 
 export default function Table1(props: props) {
 
   const { tableHeaders, tableCell, caption } = props
 
   return (
-    <div className=" bg-background ">
+    <div className=" bg-background h-96 overflow-y-auto">
       <Table>
         <TableCaption>{caption ? caption : "A list of your recent invoices."}</TableCaption>
         <TableHeader>
