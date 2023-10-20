@@ -259,7 +259,7 @@ export default function AddEditCard1(props: props) {
         return [
           {
             value:
-              <span>
+              <span className="grid grid-cols-2 gap-2">
                 <PopoverEditCard {...obj} />
                 <AlertDiologDelete {...obj} />
               </span>
