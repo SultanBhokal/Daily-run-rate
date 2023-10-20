@@ -1,5 +1,5 @@
 import { StoreState, store } from '@/hooks/zustand-store/store';
-import {  XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, ComposedChart, Area, Line, Scatter, RadialBar, RadialBarChart, LineChart, AreaChart } from 'recharts';
+import {  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area,  AreaChart } from 'recharts';
 import format from 'date-fns/format';
 
 
@@ -7,8 +7,8 @@ import format from 'date-fns/format';
 
 export default function BarChart1(){
   const records = store(state=>(state as StoreState).records);
-  const data2 = records.map(rec=>{
-     const obj = {name:`${format(rec.startDate,"dd-MM-yy")} : ${format(rec.endDate,"dd-MM-yy")}`,DRR:rec.expectedDrr}
+  const data2 = records.map((rec,ind)=>{
+     const obj = {name:`${format(rec.startDate,"dd-MM-yy")} : ${format(rec.endDate,"dd-MM-yy")}-${ind}`,DRR:rec.expectedDrr}
      return obj
   })
 
@@ -17,7 +17,7 @@ export default function BarChart1(){
   if(data2.length === 0){
     return(
       <div>
-        no data
+        Areachart , No data
       </div>
     )
   }
